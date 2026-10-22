@@ -1,0 +1,22 @@
+{
+    profile:"paravirt",
+    packages: [
+        "net-libs/nodejs",
+        "app-misc/mosquitto",
+        "net-firewall/nftables",
+        "app-admin/sudo",
+        "dev-vcs/git",
+    ],
+    accept_keywords: {
+        ">=net-libs/nodejs-26.12.1": null, // Post CVE-2026-111497
+        ">=app-arch/brotli-1.2.1": null,
+        ">=dev-cpp/simdutf-9.2.1": null,
+        ">=dev-libs/simdjson-5.0.3": null,
+        ">=dev-libs/openssl-3.5.9": null,
+    },
+    use: {
+        "sys-apps/genpack-init": "exec-guard",
+        "dev-cpp/simdutf": "atomic-base64",
+    },
+    services: ["nodered","mosquitto","nftables"]
+}

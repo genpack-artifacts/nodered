@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+npm install -g --unsafe-perm node-red
+useradd -m -G mosquitto nodered
+mkdir /home/nodered/nodered
+chown -R nodered:nodered /home/nodered
+
+chmod -R g+w /etc/mosquitto
+chgrp -R mosquitto /etc/mosquitto
+
+mkdir -p /etc/sudoers.d
+echo 'nodered ALL=NOPASSWD: /usr/bin/systemctl * nodered' > /etc/sudoers.d/allow-restart-nodered
+echo '%mosquitto ALL=NOPASSWD: /usr/bin/systemctl * mosquitto' > /etc/sudoers.d/allow-restart-mosquitto
