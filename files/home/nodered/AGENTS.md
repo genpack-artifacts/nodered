@@ -26,6 +26,10 @@ exec-guard、更新はイメージ差し替え、VM ゲストではセルフア�
 脆弱性検査は `genpack-glsa-check`。genpack 自体の設計詳細はイメージには同梱されず、
 公開リポジトリ [wbrxcorp/genpack](https://github.com/wbrxcorp/genpack) の `docs/*.md` にある。
 
+**このアーティファクト自身の定義**（`genpack.json5` / `files/**` / この `AGENTS.md` の最新）は
+公開リポジトリ [genpack-artifacts/nodered](https://github.com/genpack-artifacts/nodered) にある。
+ビルド側の話（§5）を扱うときや、イメージ内の焼き込み版より新しい内容を参照したいときはここを見る。
+
 ## 1. この artifact の中身
 
 - **Node-RED**（Node.js 製, `ja` 表示）— systemd `nodered.service`（User=nodered）
@@ -134,4 +138,5 @@ cd /usr/lib64/node_modules/node-red/node_modules && \
 足りないソフトウェアの追加、恒久的なシステム設定変更、OS・パッケージの更新、
 Node-RED/Mosquitto 本体のバージョン変更 — これらはすべて **アーティファクトの
 `genpack.json5` とビルドを更新する話**であり、稼働中に作り込むものではない。
-**迷ったらまずユーザに相談すること**（→ `/.genpack/genpack.md` §9）。
+その定義は公開リポジトリ [genpack-artifacts/nodered](https://github.com/genpack-artifacts/nodered)
+で管理されている。**迷ったらまずユーザに相談すること**（→ `/.genpack/genpack.md` §9）。
